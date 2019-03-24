@@ -1,25 +1,31 @@
 {
-  "name": "keychain",
-  "version": "1.3.0",
-  "description": "Basic access to the Mac OS X Keychain",
-  "main": "keychain.js",
-  "devDependencies": {
-    "mocha": "*",
-    "should": "*"
-  },
+  "name": "kychain",
+  "version": "1.0.0",
+  "description": "Store password in the macOS Keychain.",
+  "repository": "github:naminho/kychain",
+  "author": "Matthias Giger",
+  "license": "MIT",
+  "main": "build/index.js",
   "scripts": {
-    "test": "mocha"
+    "start": "babel-node src/index.js",
+    "build": "babel src --out-dir build",
+    "test": "jest --watchAll --runInBand"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:drudge/node-keychain.git"
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-jest": "^24.5.0",
+    "jest": "^24.5.0"
   },
-  "keywords": [
-    "osx",
-    "keychain",
-    "password",
-    "mac"
-  ],
-  "author": "Nicholas Penree",
-  "license": "MIT"
+  "jest": {
+    "moduleNameMapper": {
+      "kychain": "<rootDir>/build"
+    }
+  },
+  "files": [
+    "build"
+  ]
 }
