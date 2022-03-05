@@ -1,19 +1,18 @@
-import '@babel/polyfill'
-import { set, get, remove } from './../src'
+import { set, get, remove } from '../index'
 
 test('Throws an exception on unsupported platforms.', () => {
   expect(() => set('hello')).not.toThrow()
 
   // Change platform
-  const platform = process.platform
+  const { platform } = process
   Object.defineProperty(process, 'platform', {
-    value: 'other'
+    value: 'other',
   })
 
   expect(() => set('hello')).toThrow()
 
   Object.defineProperty(process, 'platform', {
-    value: platform
+    value: platform,
   })
 
   expect(() => set('hello')).not.toThrow()

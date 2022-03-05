@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/naminho/kychain/master/logo.png" alt="Kychain">
+  <img src="https://raw.githubusercontent.com/tobua/kychain/main/logo.png" alt="kychain">
 </p>
 
 # kychain

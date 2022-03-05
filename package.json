@@ -1,31 +1,53 @@
 {
   "name": "kychain",
-  "version": "1.0.0",
   "description": "Store password in the macOS Keychain.",
-  "repository": "github:naminho/kychain",
-  "author": "Matthias Giger",
+  "version": "0.0.0-development",
+  "repository": "github:tobua/kychain",
   "license": "MIT",
-  "main": "build/index.js",
+  "author": "Matthias Giger",
   "scripts": {
-    "start": "babel-node src/index.js",
-    "build": "babel src --out-dir build",
-    "test": "jest --watchAll --runInBand"
+    "build": "padua build",
+    "start": "padua watch",
+    "test": "padua test"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.4.0",
-    "@babel/node": "^7.2.2",
-    "@babel/polyfill": "^7.4.0",
-    "@babel/preset-env": "^7.4.2",
-    "babel-jest": "^24.5.0",
-    "jest": "^24.5.0"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "kychain": "<rootDir>/build"
+  "padua": {
+    "esbuild": {
+      "platform": "node",
+      "format": "esm"
     }
   },
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "exports": {
+    "default": "./dist/index.js"
+  },
   "files": [
-    "build"
-  ]
+    "dist"
+  ],
+  "keywords": [
+    "password",
+    "macOS",
+    "keychain"
+  ],
+  "devDependencies": {
+    "padua": "^0.5.3"
+  },
+  "prettier": "padua/configuration/.prettierrc.json",
+  "eslintConfig": {
+    "extends": "./node_modules/padua/configuration/eslint.cjs"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": [
+        "babel-jest",
+        {
+          "configFile": "./node_modules/padua/configuration/.babelrc"
+        }
+      ]
+    }
+  },
+  "engines": {
+    "node": ">= 14"
+  }
 }
